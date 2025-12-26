@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Little Nazareth Design System */
+  --radius: 1rem;
+
+  /* Primary - Sunset */
+  --primary-sunset: #FF9B71;
+  --primary-sunset-light: #FFB893;
+  --primary-sunset-dark: #E67A4F;
+
+  /* Primary - Heaven */
+  --primary-heaven: #B5A4D9;
+  --primary-heaven-light: #D4C8ED;
+  --primary-heaven-dark: #9384BF;
+
+  /* Secondary - Peace */
+  --secondary-peace: #9CC5A1;
+  --secondary-peace-light: #C4E3C9;
+  --secondary-peace-dark: #7BA580;
+
+  /* Secondary - Holy */
+  --secondary-holy: #FFD700;
+  --secondary-holy-light: #FFE34D;
+  --secondary-holy-dark: #D4AF37;
+
+  /* Neutral */
+  --neutral-cloud: #FFF8F0;
+  --neutral-cream: #F5E6D3;
+  --neutral-sand: #E8D4B8;
+
+  /* Text */
+  --text-primary: #4A3828;
+  --text-secondary: #8B7355;
+  --text-muted: #B8A692;
+
+  /* Character Colors */
+  --char-lamb: #FFE5E5;
+  --char-lamb-accent: #FFB3BA;
+  --char-lion: #FFD89B;
+  --char-lion-accent: #FFA552;
+  --char-dove: #D4E8F5;
+  --char-dove-accent: #8BC6EC;
+  --char-deer: #E8D4B8;
+  --char-deer-accent: #C9A96E;
+
+  /* Story Page Colors */
+  --color-mint-300: #86EFAC;
+  --color-mint-400: #4ADE80;
+  --color-mint-500: #22C55E;
+  --color-green-300: #86EFAC;
+  --color-green-400: #4ADE80;
+  --color-blue-300: #93C5FD;
+  --color-blue-400: #60A5FA;
+  --color-purple-300: #C4B5FD;
+  --color-purple-400: #A78BFA;
+  --color-pink-300: #F9A8D4;
+  --color-pink-400: #F472B6;
+  --color-yellow-300: #FDE047;
+  --color-orange-200: #FED7AA;
+
+  /* Pastel Palette - Warm Premium Theme */
+  --color-mint-50: #ECFDF5;
+  --color-mint-100: #D1FAE5;
+  --color-mint-200: #A7F3D0;
+  --color-mint-600: #059669;
+
+  --color-sunset-50: #FFF7ED;
+  --color-sunset-100: #FFEDD5;
+  --color-sunset-200: #FED7AA;
+  --color-sunset-500: #F97316;
+
+  --color-amber-50: #FFFBEB;
+  --color-amber-100: #FEF3C7;
+  --color-amber-200: #FDE68A;
+  --color-amber-500: #F59E0B;
+
+  --color-brown-50: #F8F6F4;
+  --color-brown-100: #E8DDD1;
+  --color-brown-200: #D4C4B0;
+  --color-brown-500: #8B6B47;
+
+  --color-yellow-50: #FEFCE8;
+  --color-yellow-100: #FEF9C3;
+  --color-yellow-600: #CA8A04;
+
+  --color-cream: #FFF8F0;
+  --color-cream-light: #FFFCF5;
+
+  /* Shadcn/ui theme mappings */
+  --background: var(--neutral-cloud);
+  --foreground: var(--text-primary);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--text-primary);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--primary-sunset);
+  --primary-foreground: #FFFFFF;
+  --secondary: var(--primary-heaven);
+  --secondary-foreground: #FFFFFF;
+  --muted: var(--neutral-cream);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--secondary-peace);
+  --accent-foreground: #FFFFFF;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--neutral-sand);
+  --input: var(--neutral-sand);
+  --ring: var(--primary-sunset);
+  --chart-1: var(--primary-sunset);
+  --chart-2: var(--primary-heaven);
+  --chart-3: var(--secondary-peace);
+  --chart-4: var(--secondary-holy);
+  --chart-5: var(--char-lamb-accent);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--primary-sunset);
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: var(--neutral-cream);
+  --sidebar-accent-foreground: var(--text-primary);
+  --sidebar-border: var(--neutral-sand);
+  --sidebar-ring: var(--primary-sunset);
+}
+
+/* Base styles removed - using Tailwind v4 */
+
+/* Little Nazareth Custom Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes holy-glow {
+
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(255, 215, 0, 0.5),
+      0 0 40px rgba(255, 215, 0, 0.3);
+  }
+
+  50% {
+    box-shadow:
+      0 0 40px rgba(255, 215, 0, 0.8),
+      0 0 80px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes spin-reveal {
+  from {
+    opacity: 0;
+    transform: rotateY(180deg) scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Utility Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-holy-glow {
+  animation: holy-glow 3s ease-in-out infinite;
+}
+
+.animate-reveal {
+  animation: reveal 0.8s ease-out forwards;
+}
+
+.animate-spin-reveal {
+  animation: spin-reveal 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Font Families */
+.font-handwriting {
+  font-family: "Nanum Pen Script", cursive;
+}
