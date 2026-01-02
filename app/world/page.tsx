@@ -16,7 +16,7 @@ export default function WorldPage() {
   };
 
   const selectedCharacterData = selectedCharacter
-    ? characters[selectedCharacter]
+    ? characters.find((c) => c.id === selectedCharacter)
     : null;
 
   return (
@@ -116,17 +116,7 @@ export default function WorldPage() {
               {/* Story */}
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-6">
                 <p className="whitespace-pre-line text-gray-700 leading-relaxed">
-                  {selectedCharacterData.fullStory}
-                </p>
-              </div>
-
-              {/* Bible Verse */}
-              <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 mb-6 border-2 border-white">
-                <p className="text-sm text-gray-700 italic mb-2">
-                  "{selectedCharacterData.bibleVerse.text}"
-                </p>
-                <p className="text-xs text-gray-500 text-right">
-                  - {selectedCharacterData.bibleVerse.reference}
+                  {selectedCharacterData.story}
                 </p>
               </div>
 
@@ -141,7 +131,7 @@ export default function WorldPage() {
                 <button
                   className="flex-1 px-6 py-3 rounded-full font-medium text-white transition-all hover:scale-105"
                   style={{
-                    background: `linear-gradient(135deg, ${selectedCharacterData.color}, ${selectedCharacterData.accentColor})`
+                    backgroundColor: selectedCharacterData.color
                   }}
                 >
                   함께하기 🛒
