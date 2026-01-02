@@ -452,58 +452,69 @@ export default function Home() {
         </Link>
       </motion.div>
 
-      {/* 하단 네비게이션 - 브랜딩 카피 유지, 가로 스크롤 */}
-      <nav className="absolute bottom-0 left-0 right-0 z-20">
-        <div className="flex justify-center px-2 md:px-6 pb-3 md:pb-6">
+      {/* 하단 네비게이션 - 한 라인 배치, 사이드바 피하기 */}
+      <nav className="fixed bottom-0 left-0 lg:left-[28%] right-0 z-30 pointer-events-none">
+        <div className="flex justify-center lg:justify-start px-2 lg:px-6 pb-3 lg:pb-6 pointer-events-none">
           <motion.div
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-white/95 backdrop-blur-md rounded-xl md:rounded-2xl shadow-2xl w-full max-w-full md:max-w-none overflow-x-auto scrollbar-hide"
+            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl pointer-events-auto overflow-hidden"
           >
-            <div className="flex items-center gap-3 md:gap-8 px-4 md:px-12 py-3 md:py-5 min-w-max">
+            {/* 한 라인 가로 배치 - 크기 확대 */}
+            <div className="flex items-center gap-6 lg:gap-10 px-6 lg:px-12 py-5 lg:py-7 overflow-x-auto scrollbar-hide">
               {/* Menu Item 1 */}
-              <Link href="/story" className="flex items-center gap-2 md:gap-4 group">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-amber-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                  <span className="text-xl md:text-3xl">🏠</span>
+              <Link href="/story" className="flex items-center gap-4 group shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-amber-100 to-amber-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-all shadow-lg">
+                  <span className="text-3xl lg:text-4xl">🏠</span>
                 </div>
-                <span className="text-xs md:text-lg font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors leading-tight whitespace-nowrap">
-                  리틀 나자렛에서<br className="hidden md:block" />시작하는 새로운 하루
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap leading-tight">
+                    리틀 나자렛에서
+                  </span>
+                  <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap leading-tight">
+                    시작하는 새로운 하루
+                  </span>
+                </div>
               </Link>
 
-              <div className="w-px h-10 md:h-14 bg-gray-300 shrink-0" />
+              <div className="w-px h-14 lg:h-16 bg-gray-300 shrink-0" />
 
               {/* Menu Item 2 */}
-              <Link href="/world" className="flex items-center gap-2 md:gap-4 group">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                  <span className="text-xl md:text-3xl">🌍</span>
+              <Link href="/world" className="flex items-center gap-4 group shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-all shadow-lg">
+                  <span className="text-3xl lg:text-4xl">🌍</span>
                 </div>
-                <span className="text-xs md:text-lg font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap">
+                <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap">
                   3D 월드
                 </span>
               </Link>
 
-              <div className="w-px h-10 md:h-14 bg-gray-300 shrink-0" />
+              <div className="w-px h-14 lg:h-16 bg-gray-300 shrink-0" />
 
               {/* Menu Item 3 */}
-              <Link href="/test" className="flex items-center gap-2 md:gap-4 group">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-pink-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                  <span className="text-xl md:text-3xl">✨</span>
+              <Link href="/test" className="flex items-center gap-4 group shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-pink-100 to-pink-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-all shadow-lg">
+                  <span className="text-3xl lg:text-4xl">✨</span>
                 </div>
-                <span className="text-xs md:text-lg font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors leading-tight whitespace-nowrap">
-                  나한테 꼭 맞는<br className="hidden md:block" />친구찾기 테스트
-                </span>
+                <div className="flex flex-col">
+                  <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap leading-tight">
+                    나한테 꼭 맞는
+                  </span>
+                  <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap leading-tight">
+                    친구찾기 테스트
+                  </span>
+                </div>
               </Link>
 
-              <div className="w-px h-10 md:h-14 bg-gray-300 shrink-0" />
+              <div className="w-px h-14 lg:h-16 bg-gray-300 shrink-0" />
 
               {/* Menu Item 4 */}
-              <button className="flex items-center gap-2 md:gap-4 group">
-                <div className="w-10 h-10 md:w-14 md:h-14 bg-purple-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                  <span className="text-xl md:text-3xl">▶️</span>
+              <button className="flex items-center gap-4 group shrink-0">
+                <div className="w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full flex items-center justify-center group-hover:scale-110 transition-all shadow-lg">
+                  <span className="text-3xl lg:text-4xl">▶️</span>
                 </div>
-                <span className="text-xs md:text-lg font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap">
+                <span className="text-sm lg:text-base font-bold text-[#4A3828] group-hover:text-[#7C6FFF] transition-colors whitespace-nowrap">
                   영상
                 </span>
               </button>
