@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+
+  // 카카오 정보
+  kakaoId   String   @unique @map("kakao_id")
+  name      String
+  email     String?
+  profileImage String? @map("profile_image")
+
+  // 추가 정보
+  phone     String?
+
+  // 카카오톡 채널
+  kakaoChannelAdded Boolean @default(false) @map("kakao_channel_added")
+  kakaoChannelAddedAt DateTime? @map("kakao_channel_added_at")
+
+  // 마케팅
+  marketingAgree Boolean @default(false) @map("marketing_agree")
+  favoriteCharacter String? @map("favorite_character")
+
+  // 텀블벅 알림
+  tumblbugNotify Boolean @default(true) @map("tumblbug_notify")
+
+  // 쿠폰 및 할인
+  earlyBirdCouponUsed Boolean @default(false) @map("early_bird_coupon_used")
+  referralCode String? @unique @map("referral_code") // 내 추천 코드
+  referredBy String? @map("referred_by") // 누가 나를 추천했는지
+  referralCount Int @default(0) @map("referral_count") // 내가 추천한 사람 수
+
+  // 타임스탬프
+  createdAt DateTime @default(now()) @map("created_at")
+  lastLogin DateTime @default(now()) @map("last_login")
+
+  // Relations
+  coupons Coupon[]
+  referrals Referral[] @relation("Referrer")
+  referredUsers Referral[] @relation("Referred")
+
+  @@map("users")
+}
+
+// 쿠폰 모델
+model Coupon {
+  id        Int      @id @default(autoincrement())
+  code      String   @unique
+  type      String   // "EARLY_BIRD", "REFERRAL", "CUSTOM"
+  discount  Int      // 할인율 (%)
+  isUsed    Boolean  @default(false) @map("is_used")
+  usedAt    DateTime? @map("used_at")
+  expiresAt DateTime? @map("expires_at")
+
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("coupons")
+}
+
+// 추천 모델
+model Referral {
+  id        Int      @id @default(autoincrement())
+
+  referrerId Int     @map("referrer_id")
+  referrer   User    @relation("Referrer", fields: [referrerId], references: [id], onDelete: Cascade)
+
+  referredId Int     @map("referred_id")
+  referred   User    @relation("Referred", fields: [referredId], references: [id], onDelete: Cascade)
+
+  rewardClaimed Boolean @default(false) @map("reward_claimed")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([referrerId, referredId])
+  @@map("referrals")
+}
+
+// 시스템 설정 모델
+model SystemSettings {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}

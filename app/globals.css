@@ -227,3 +227,13 @@
 .font-handwriting {
   font-family: "Nanum Pen Script", cursive;
 }
+
+/* Hide scrollbar for mobile navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

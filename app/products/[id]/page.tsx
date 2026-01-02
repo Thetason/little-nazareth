@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="aspect-[4/5] bg-[#F8F6F3] flex items-center justify-center relative"
+            className="aspect-square bg-[#F8F6F3] flex items-center justify-center relative overflow-hidden"
           >
             {product.featured && (
               <div className="absolute top-6 left-6 z-10">
@@ -124,9 +124,21 @@ export default function ProductDetailPage() {
                 </span>
               </div>
             )}
-            <div className="text-[200px] md:text-[250px]">
-              {product.characterId ? getCharacterEmoji(product.characterId) : '🎁'}
-            </div>
+            <img
+              src={product.image}
+              alt={product.koreanName}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const parent = e.currentTarget.parentElement;
+                if (parent) {
+                  const emojiDiv = document.createElement('div');
+                  emojiDiv.className = 'text-[200px] md:text-[250px]';
+                  emojiDiv.textContent = product.characterId ? getCharacterEmoji(product.characterId) : '🎁';
+                  parent.appendChild(emojiDiv);
+                }
+              }}
+            />
           </motion.div>
 
           {/* Product Info */}

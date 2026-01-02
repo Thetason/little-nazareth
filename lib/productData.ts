@@ -8,6 +8,7 @@ export interface Product {
   description: string;
   price: number;
   image: string;
+  images?: string[]; // 멀티 이미지 (제품 상세용)
   category: 'plushie' | 'sticker' | 'book' | 'accessory' | 'homegoods';
   characterId?: string;
   inStock: boolean;
@@ -23,7 +24,7 @@ export const products: Product[] = [
     englishName: 'Lambie Plushie',
     koreanName: '램비 인형',
     description: '눈물이 많은 우리 램비 친구! 부드러운 양털 소재로 포근하게 안아줄 수 있어요.',
-    price: 35000,
+    price: 72000,
     image: '/products/lambie-plush.jpg',
     category: 'plushie',
     characterId: 'lamb',
@@ -37,8 +38,15 @@ export const products: Product[] = [
     englishName: 'Ari Plushie',
     koreanName: '아리 인형',
     description: '용감한 척하지만 사실은 귀여운 아리! 폭신한 갈기가 매력 포인트예요.',
-    price: 35000,
+    price: 72000,
     image: '/products/ari-plush.jpg',
+    images: [
+      '/products/ari-plush-1.jpg', // 정면 (기도 포즈)
+      '/products/ari-plush-2.jpg', // 측면
+      '/products/ari-plush-3.jpg', // 뒷면
+      '/products/ari-plush-4.jpg', // 얼굴 클로즈업
+      '/products/ari-plush-5.jpg', // 얼굴+상반신 클로즈업
+    ],
     category: 'plushie',
     characterId: 'lion',
     stock: 42,
@@ -51,8 +59,14 @@ export const products: Product[] = [
     englishName: 'Davi Plushie',
     koreanName: '다비 인형',
     description: '용기의 조약돌을 품은 귀여운 다람쥐 다비! 미니 사이즈로 가방에 달아보세요.',
-    price: 32000,
+    price: 72000,
     image: '/products/davi-plush.jpg',
+    images: [
+      '/products/davi-plush-1.jpg', // 정면
+      '/products/davi-plush-2.jpg', // 뒷면
+      '/products/davi-plush-3.jpg', // 측면
+      '/products/davi-plush-4.jpg', // 클로즈업
+    ],
     category: 'plushie',
     characterId: 'squirrel',
     stock: 35,
@@ -64,7 +78,7 @@ export const products: Product[] = [
     englishName: 'Coco Plushie',
     koreanName: '코코 인형',
     description: '늘 졸린 코코 곰돌이! 초콜릿 향기가 나는 담요와 함께해요.',
-    price: 38000,
+    price: 72000,
     image: '/products/coco-plush.jpg',
     category: 'plushie',
     characterId: 'bear',
@@ -73,7 +87,7 @@ export const products: Product[] = [
     featured: true,
   },
 
-  // 스티커 세트
+  // 스티커 세트 - 판매 중단
   {
     id: 'character-sticker-set',
     name: 'Character Sticker Set',
@@ -83,11 +97,11 @@ export const products: Product[] = [
     price: 12000,
     image: '/products/sticker-set.jpg',
     category: 'sticker',
-    stock: 47,
-    inStock: true,
+    stock: 0,
+    inStock: false,
   },
 
-  // 스토리북
+  // 스토리북 - 판매 중단
   {
     id: 'story-book',
     name: 'Little Nazareth Story Book',
@@ -97,12 +111,12 @@ export const products: Product[] = [
     price: 18000,
     image: '/products/story-book.jpg',
     category: 'book',
-    stock: 23,
-    inStock: true,
-    featured: true,
+    stock: 0,
+    inStock: false,
+    featured: false,
   },
 
-  // 홈굿즈
+  // 홈굿즈 - 판매 중단
   {
     id: 'coco-blanket',
     name: 'Coco Blanket',
@@ -113,8 +127,8 @@ export const products: Product[] = [
     image: '/products/coco-blanket.jpg',
     category: 'homegoods',
     characterId: 'bear',
-    stock: 12,
-    inStock: true,
+    stock: 0,
+    inStock: false,
   },
   {
     id: 'character-cushion',
@@ -125,11 +139,11 @@ export const products: Product[] = [
     price: 28000,
     image: '/products/character-cushion.jpg',
     category: 'homegoods',
-    stock: 31,
-    inStock: true,
+    stock: 0,
+    inStock: false,
   },
 
-  // 액세서리
+  // 액세서리 - 판매 중단
   {
     id: 'character-keychain',
     name: 'Character Keychain',
@@ -139,8 +153,8 @@ export const products: Product[] = [
     price: 8000,
     image: '/products/keychain.jpg',
     category: 'accessory',
-    stock: 45,
-    inStock: true,
+    stock: 0,
+    inStock: false,
   },
   {
     id: 'eco-bag',
@@ -151,8 +165,8 @@ export const products: Product[] = [
     price: 15000,
     image: '/products/eco-bag.jpg',
     category: 'accessory',
-    stock: 38,
-    inStock: true,
+    stock: 0,
+    inStock: false,
   },
 ];
 
