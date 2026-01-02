@@ -25,7 +25,7 @@ export default function ResultPage() {
     // 캐릭터 결정
     const result = getCharacterFromAnswers(answers);
     setCharacterId(result);
-    setCharacter(characters[result]);
+    setCharacter(characters.find((c) => c.id === result));
 
     // 타이밍 시퀀스
     setTimeout(() => setPhase('reveal'), 2000);
